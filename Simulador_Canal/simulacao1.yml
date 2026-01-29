@@ -1,0 +1,45 @@
+parameters:
+  pixels_per_metro: 20.0
+  frequency_mhz: 2400.0
+  distance_unit: Metros
+  propagation_model: Log-Distância
+  model_d0: 43.0
+  model_beta: 6.0
+background_image_path: null
+nodes:
+- id: 0
+  descricao: Base 0
+  type: Nó Base
+  coords:
+  - 214.0
+  - 266.0
+  power_dbm: 14.0
+  gain_dbi: 2.2
+- id: 1
+  descricao: Sensor 1
+  type: Nó Sensor
+  coords:
+  - 1066
+  - 137
+  power_dbm: 14.0
+  gain_dbi: 2.2
+  sensor_type: Clima
+obstacles:
+- type: Parede de Concreto
+  coords:
+  - - 251
+    - 146
+  - - 522
+    - 402
+- type: Parede de Concreto
+  coords:
+  - - 518
+    - 158
+  - - 733
+    - 330
+- type: Parede de Concreto
+  coords:
+  - - 847
+    - 163
+  - - 954
+    - 289

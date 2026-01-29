@@ -1,0 +1,76 @@
+/* Copiado diretamente do <style> do seu index.html */
+:root {
+  --cor-fundo: #f4f7f9; --cor-container: #ffffff; --cor-texto-principal: #2c3e50;
+  --cor-texto-secundario: #5a738b; --cor-borda: #dee7f0; --sombra: 0 8px 24px rgba(21, 48, 71, 0.08);
+  --cor-primaria: #3498db; --cor-sucesso: #2ecc71; --cor-aviso: #f1c40f; --cor-perigo: #e74c3c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto-principal); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
+.site-header { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; text-align: center; background: linear-gradient(to right, #2c3e50, #34495e); padding: 25px 20px; border-radius: 12px; box-shadow: var(--sombra); }
+.logo { max-height: 60px; margin-bottom: 15px; }
+.site-header h1 { font-size: 2em; font-weight: 700; color: #ffffff; }
+main { width: 100%; max-width: 1200px; }
+
+/* Estilo da Navegação */
+.main-nav { width: 100%; background-color: var(--cor-container); border: 1px solid var(--cor-borda); border-radius: 12px; margin-bottom: 30px; box-shadow: var(--sombra); overflow: hidden; }
+.main-nav ul { list-style: none; display: flex; }
+.main-nav li { flex-grow: 1; }
+.main-nav a { display: block; padding: 20px; text-align: center; text-decoration: none; font-size: 1.2em; font-weight: 700; color: var(--cor-texto-secundario); transition: background-color 0.2s, color 0.2s; }
+.main-nav a:hover { background-color: #f8f9fa; color: var(--cor-primaria); }
+.main-nav a.active { background-color: var(--cor-primaria); color: white; }
+
+.main-content { display: flex; gap: 30px; width: 100%; }
+.panel { background-color: var(--cor-container); border: 1px solid var(--cor-borda); border-radius: 12px; padding: 25px; box-shadow: var(--sombra); display: flex; flex-direction: column; }
+.panel h2 { font-size: 1.5em; margin-bottom: 10px; color: var(--cor-texto-principal); border-bottom: 2px solid var(--cor-primaria); padding-bottom: 10px; }
+.panel h3 { font-size: 1.2em; margin-top: 20px; margin-bottom: 15px; color: var(--cor-primaria); border-left: 4px solid var(--cor-primaria); padding-left: 10px; }
+.panel-subtitle { font-size: 0.9em; color: var(--cor-texto-secundario); margin-bottom: 20px; text-align: left; }
+.panel-subtitle span { font-weight: 700; color: var(--cor-primaria); }
+.control-panel { flex: 1; }
+#circuito-container svg { width: 100%; height: auto; margin-top: 20px; }
+.monitoring-panel { flex: 1; }
+.latest-value-display { background-color: #f8f9fa; border: 1px solid var(--cor-borda); border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px; }
+.latest-value-display p { font-size: 1.1em; color: var(--cor-texto-secundario); margin-bottom: 10px; }
+.latest-value-display span { font-size: 2.8em; font-weight: 700; color: var(--cor-primaria); }
+.chart-container { position: relative; flex-grow: 1; min-height: 250px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+.stat-card { background-color: #f8f9fa; border-radius: 8px; padding: 15px; text-align: center; border-bottom: 4px solid; }
+.stat-card p { font-size: 0.9em; color: var(--cor-texto-secundario); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
+.stat-card span { font-size: 1.8em; font-weight: 700; }
+.stat-card.mean { border-color: var(--cor-sucesso); } .stat-card.mean span { color: var(--cor-sucesso); }
+.stat-card.max { border-color: var(--cor-perigo); } .stat-card.max span { color: var(--cor-perigo); }
+.stat-card.min { border-color: var(--cor-aviso); } .stat-card.min span { color: var(--cor-aviso); }
+.explanation-panel { margin-top: 30px; }
+.explanation-panel p { font-size: 1.1em; line-height: 1.7; color: var(--cor-texto-secundario); }
+.explanation-panel p:not(:last-child) { margin-bottom: 15px; }
+
+/* Estilos de Formulário (do index.html) */
+.threshold-form { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 5px; font-weight: 700; color: var(--cor-texto-secundario); }
+.form-group input, .form-group select { padding: 10px; border-radius: 6px; border: 1px solid var(--cor-borda); font-size: 1em; }
+.form-group input[type="checkbox"] { flex-direction: row; align-items: center; }
+
+/* Botões */
+.btn { padding: 12px; border: none; border-radius: 6px; font-size: 1em; font-weight: 700; cursor: pointer; transition: background-color 0.2s; }
+.btn-primary { background-color: var(--cor-primaria); color: white; }
+.btn-primary:hover { background-color: #2980b9; }
+.btn-success { background-color: var(--cor-sucesso); color: white; margin-top: 20px; }
+.btn-danger { background-color: var(--cor-perigo); color: white; }
+.btn-small { padding: 5px 10px; font-size: 0.9em; }
+
+#save-status { margin-top: 15px; text-align: center; font-weight: 700; height: 1.5em; }
+
+/* Estilos do Gerenciador de Sensores (Config) */
+.sensor-manager-container { display: flex; flex-direction: column; gap: 20px; }
+.sensor-card { border: 1px solid var(--cor-borda); border-radius: 8px; padding: 20px; background: #fdfdfd; }
+.sensor-card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--cor-borda); padding-bottom: 10px; }
+.sensor-card-header h4 { font-size: 1.2em; color: var(--cor-texto-principal); }
+.sensor-card-body { margin-top: 15px; display: flex; flex-direction: column; gap: 15px; }
+.sensor-field-list { margin-top: 15px; }
+.sensor-field { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr; gap: 10px; align-items: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #eee; }
+.sensor-field label { font-size: 0.9em; color: var(--cor-texto-secundario); }
+
+.site-footer { width: 100%; text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--cor-borda); color: var(--cor-texto-secundario); }
+
+@media (max-width: 900px) { .main-content { flex-direction: column; } }
+@media (max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } .sensor-field { grid-template-columns: 1fr; } }

@@ -1,0 +1,13 @@
+config_sensores:
+  '1':
+    id_sensor: 1
+    source_file: clima.py
+    mapeamento_pacote:
+      temperatura:
+        escala: 10
+        posicao_byte: 16
+        tamanho_bytes: 2
+      umidade:
+        escala: 10
+        posicao_byte: 18
+        tamanho_bytes: 2

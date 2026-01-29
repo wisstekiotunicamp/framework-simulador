@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Configuração | TpM{% endblock %}
+
+{% block content %}
+<script id="config-data" type="application/json">
+    {{ config | tojson }}
+</script>
+
+<div class="main-content" style="flex-direction: column;">
+    <section class="panel control-panel">
+        <h2>Painel de Configuração do Backend</h2>
+        <p class="panel-subtitle">Configure os parâmetros dos Níveis 3 e 4 e gerencie a decodificação dos sensores do Nível 1.</p>
+
+        <form id="config-form-n3" class="threshold-form">
+            <h3>Nível 3 (Borda / Estação Base)</h3>
+            <div class="form-group">
+                <label for="n3-ativo">Coleta Ativa</label>
+                <input type="checkbox" id="n3-ativo" style="width: auto; align-self: flex-start;">
+            </div>
+            <div class="form-group">
+                <label for="n3-intervalo">Intervalo de Leitura (segundos)</label>
+                <input type="number" id="n3-intervalo" placeholder="Ex: 10">
+            </div>
+            <div class="form-group">
+                <label for="n3-id-base">ID da Estação Base</label>
+                <input type="number" id="n3-id-base" placeholder="Ex: 0">
+            </div>
+            <div class="form-group">
+                <label for="n3-timeout">Tempo Limite de Resposta (segundos)</label>
+                <input type="number" id="n3-timeout" placeholder="Ex: 20">
+            </div>
+        </form>
+
+        <form id="config-form-n4" class="threshold-form">
+            <h3>Nível 4 (Armazenamento / Logs)</h3>
+            <div class="form-group">
+                <label for="n4-diretorio">Diretório de Logs (relativo à raiz do projeto)</label>
+                <input type="text" id="n4-diretorio" placeholder="Ex: Nivel4/Tempo_Real">
+            </div>
+            <div class="form-group">
+                <label for="n4-arquivo-rede">Arquivo de Log de Rede</label>
+                <input type="text" id="n4-arquivo-rede" placeholder="Ex: dados_brutos_rede.jsonl">
+            </div>
+            <div class="form-group">
+                <label for="n4-arquivo-app">Arquivo de Log de Aplicação</label>
+                <input type="text" id="n4-arquivo-app" placeholder="Ex: dados_brutos_aplicacao.jsonl">
+            </div>
+        </form>
+
+        <div class="sensor-manager-container">
+            <h3>Gerenciador de Sensores (Decodificação Nível 1)</h3>
+            <div id="sensor-list-container"></div>
+            <button id="add-sensor-btn" class="btn btn-primary" style="align-self: flex-start;">+ Adicionar Novo Nó Sensor</button>
+        </div>
+
+        <hr style="margin-top: 30px; margin-bottom: 20px;">
+        <button id="save-all-config-btn" class="btn btn-success" style="font-size: 1.2em;">Salvar Configuração Completa</button>
+        <div id="save-status"></div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/config_logic.js') }}"></script>
+{% endblock %}

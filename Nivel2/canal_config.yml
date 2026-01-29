@@ -1,0 +1,7 @@
+modelo_atual: Log-Distância
+links:
+  '1':
+    rssi_uplink_dbm: -45.885658039825664
+    atenuacao_uplink_db: 64.28565803982566
+    rssi_downlink_dbm: -45.885658039825664
+    atenuacao_downlink_db: 64.28565803982566

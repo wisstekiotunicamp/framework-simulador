@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TpM - Interface de Gerenciamento{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/chart.min.js') }}"></script>
+</head>
+<body>
+    <header class="site-header">
+        <img src="{{ url_for('static', filename='img/logo_wisstek.png') }}" alt="Logotipo Wisstek" class="logo">
+        <h1>TpM - Interface de Gerenciamento</h1>
+    </header>
+    <main>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="{{ url_for('dashboard_dados') }}" class="{{ 'active' if 'dashboard_dados' in request.endpoint else '' }}">Dashboard de Dados</a></li>
+                <li><a href="{{ url_for('dashboard_rede') }}" class="{{ 'active' if 'dashboard_rede' in request.endpoint else '' }}">Dashboard de Rede</a></li>
+                <li><a href="{{ url_for('configuracao') }}" class="{{ 'active' if 'configuracao' in request.endpoint else '' }}">Configuração</a></li>
+            </ul>
+        </nav>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer"><p>&copy; 2025 Wisstek. Todos os direitos reservados.</p></footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

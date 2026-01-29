@@ -1,0 +1,85 @@
+# Nivel4/Parametros/configuracoes.yaml
+
+# ==============================================================================
+# CONFIGURAÇÕES DO NÍVEL 3 (ESTAÇÃO BASE / BORDA)
+# Estes parâmetros serão lidos APENAS pelo script nivel3.py
+# ==============================================================================
+nivel3:
+  # Chave para ligar (True) ou desligar (False) o script da base.
+  ativo: True
+
+  # Intervalo em segundos entre cada ciclo de requisição de dados.
+  intervalo_leitura_s: 5
+
+  # ID da estação Base que está executando este script.
+  id_base: 0
+  
+  # Tempo máximo (em segundos) que a base aguardará por uma resposta do sensor.
+  tempo_limite_resposta_s: 20
+
+# ==============================================================================
+# CONFIGURAÇÕES DO NÍVEL 4 (ARMAZENAMENTO)
+# Parâmetros lidos pelo nivel3.py para saber onde e como salvar os dados.
+# ==============================================================================
+nivel4:
+  # Nome do diretório onde os logs serão salvos.
+  diretorio_logs: Nivel4/Tempo_Real
+
+  # Nome do arquivo de log para dados brutos de REDE.
+  nome_arquivo_rede: dados_brutos_rede.jsonl
+
+  # Nome do arquivo de log para dados brutos de APLICAÇÃO.
+  # Usaremos o formato JSON Lines para flexibilidade.
+  nome_arquivo_aplicacao: dados_brutos_aplicacao.jsonl
+
+# ==============================================================================
+# CONFIGURAÇÕES DO NÍVEL 5 (ANÁLISE) - (Manter para o futuro)
+# ==============================================================================
+nivel5:
+  ativado: True
+  janela_rede: 100
+  janela_aplicacao: 50
+  intervalo_analise_s: 10
+
+# ==============================================================================
+# DESCRIÇÃO DOS DISPOSITIVOS DO NÍVEL 1 (PARA USO DO BACKEND)
+# MUDANÇA: A chave agora é 'nivel1', como solicitado.
+# Esta seção é a "chave de decodificação" que o nivel3.py usa para
+# interpretar os pacotes que chegam dos sensores.
+# ==============================================================================
+nivel1:
+  # --- Configuração de decodificação para o Sensor de ID 1 ---
+  '1':
+  
+    #Descrição do Nó Sensor
+    descricao: 'Nó Sensor 1'
+  
+    # Nome amigável do tipo de dados (usado para logs e exibições).
+    tipo_dados: 'Clima'
+    
+    # Cabeçalhos que serão escritos no arquivo de log JSONL (apenas para referência, não usado diretamente).
+    log_headers: ['Data e Hora', 'Contador', 'Temperatura (C)', 'Umidade (%)']
+    
+    # O "manual de decodificação" para os bytes do pacote.
+    mapeamento_pacote:
+      - campo: 'temperatura'
+        posicao_byte: 16
+        tamanho_bytes: 2
+        escala: 10 # O valor lido do pacote será dividido por esta escala.
+      - campo: 'umidade'
+        posicao_byte: 18
+        tamanho_bytes: 2
+        escala: 10
+
+  # --- Configuração de decodificação para o Sensor de ID 2 ---
+  '2':
+    #Descrição do Nó Sensor
+    descricao: 'Nó Sensor 2'  
+    
+    tipo_dados: 'Luminosidade'
+    log_headers: ['Data e Hora', 'Contador', 'Luminosidade (Lux)']
+    mapeamento_pacote:
+      - campo: 'luminosidade_lux'
+        posicao_byte: 16
+        tamanho_bytes: 2
+        escala: 1 # O valor lido é o valor real.
